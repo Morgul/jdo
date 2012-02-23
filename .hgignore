@@ -1,0 +1,16 @@
+# use glob syntax.
+syntax: glob
+
+# Test Results
+TestResults/**
+
+# Build Artifacts
+**bin/**
+**obj/**
+
+# Vim Artifacts
+**.swp
+**~
+
+# Visual Studio Artifacts
+**.suo
