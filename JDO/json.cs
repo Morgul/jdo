@@ -12,7 +12,19 @@ namespace JDO
     public class JSON
     {
         // Our internal serializer object.
-        private static JavaScriptSerializer serializer = new JavaScriptSerializer();
+        private static JavaScriptSerializer _serializer = null;
+        private static JavaScriptSerializer serializer
+        {
+            get
+            {
+                if (_serializer == null)
+                {
+                    _serializer = new JavaScriptSerializer();
+                    _serializer.RegisterConverters(new List<JavaScriptConverter>{new DynObjectConverter()});
+                } // end if
+                return _serializer;
+            } // end get
+        } // end serializer
 
         /// <summary>
         /// Deserializes a json string, and returns an object hierarchy.
