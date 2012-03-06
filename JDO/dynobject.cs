@@ -158,6 +158,16 @@ namespace JDO.Dynamic
             } // end if
         } // end Wrap
 
+        /// <summary>
+        /// Renders the DynObject as a json string. Warning: This renders the entire hierarchy, and therefore shouldn't
+        /// be called from time-sensitive code. Calling this method repeatedly may be CPU intensive.
+        /// </summary>
+        /// <returns>A string, representing the DynObject as a JSON object.</returns>
+        public string renderJson()
+        {
+            return JSON.Serialize(wrappedObject);
+        } // end renderJson
+
         #region IDictionary Members
         public int Count
         {
