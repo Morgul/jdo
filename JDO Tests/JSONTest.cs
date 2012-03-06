@@ -150,6 +150,27 @@ namespace JDO_Tests
         #region DynObject Tests
 
         [TestMethod()]
+        public void PrintingTest()
+        {
+            string actual = jsonTestObject.ToString();
+            Assert.AreEqual(jsonTestString, actual);
+        } // end PrintingTest
+
+        [TestMethod()]
+        public void ImplicitCastingStringTest()
+        {
+            string actual = jsonTestObject;
+            Assert.AreEqual(jsonTestString, actual);
+        } // end ImplicitCastingStringTest
+
+        [TestMethod()]
+        public void ExplicitCastingStringTest()
+        {
+            string actual = (string) jsonTestObject;
+            Assert.AreEqual(jsonTestString, actual);
+        } // end ExplicitCastingStringTest
+
+        [TestMethod()]
         public void AccessorTest()
         {
             Assert.AreEqual("test", jsonTestObject.bar);

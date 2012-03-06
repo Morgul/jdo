@@ -158,6 +158,8 @@ namespace JDO.Dynamic
             } // end if
         } // end Wrap
 
+        #region String Conversion
+
         /// <summary>
         /// Renders the DynObject as a json string. Warning: This renders the entire hierarchy, and therefore shouldn't
         /// be called from time-sensitive code. Calling this method repeatedly may be CPU intensive.
@@ -167,6 +169,28 @@ namespace JDO.Dynamic
         {
             return JSON.Serialize(wrappedObject);
         } // end renderJson
+
+        /// <summary>
+        /// Custom ToString method, to make printing easier. Carries the same warning as renderJson; this serializes the
+        /// entire object hierarch, and can be both time and CPU intensive.
+        /// </summary>
+        /// <returns>A string, representing the DynObject as a JSON object.</returns>
+        public override string ToString()
+        {
+            return JSON.Serialize(wrappedObject);
+        } // end ToString
+
+        /// <summary>
+        /// Custom converion to string, to make printing easier. Carries the same warning as renderJson; this serializes the
+        /// entire object hierarch, and can be both time and CPU intensive.
+        /// </summary>
+        /// <returns>A string, representing the DynObject as a JSON object.</returns>
+        public static implicit operator string(DynObject obj)
+        {
+            return JSON.Serialize(obj);
+        } // end implicit operator string
+
+        # endregion
 
         #region IDictionary Members
         public int Count
