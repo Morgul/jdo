@@ -240,14 +240,23 @@ namespace JDO_Tests
 
         #region DynList Tests
 
-        /*
         [TestMethod()]
-        public void DeserializeTest()
+        public void EnumeratorTest()
         {
-            dynamic actual = JSON.Load(jsonTestString);
-            Assert.AreEqual(jsonTestObject.bar, actual.bar);
-        } // end DeserializeTest
-        */
+
+            dynamic dyn = new DynList {new DynObject {{"bleh", null}}, new DynObject {{"bleh", null}}};
+            foreach (object obj in dyn)
+            {
+                Assert.IsInstanceOfType(obj, typeof(DynObject));
+            } // end foreach
+
+            dynamic dyn2 = new DynList {new DynList {1, 2}, new DynList {3, 4}};
+            foreach (object obj in dyn2)
+            {
+                Assert.IsInstanceOfType(obj, typeof(DynList));
+            } // end foreach
+        } // end EnumeratorTest
+
         #endregion
     } // end JSONTest
 } // end namespace

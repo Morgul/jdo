@@ -137,12 +137,15 @@ namespace JDO.Dynamic
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return wrappedObject.GetEnumerator();
+            return (this as IEnumerable<object>).GetEnumerator();
         } // end GetEnumerator
 
         IEnumerator<object> IEnumerable<object>.GetEnumerator()
         {
-            return wrappedObject.GetEnumerator();
+            foreach (object obj in wrappedObject)
+            {
+                yield return DynObject.Wrap(obj);
+            } // end foreach
         } // end GetEnumerator
 
         #endregion
