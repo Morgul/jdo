@@ -192,6 +192,19 @@ namespace JDO.Dynamic
 
         # endregion
 
+        #region Extensions
+        
+        public dynamic GetValue(String key, dynamic defaultValue=null)
+        {
+            if (wrappedObject.ContainsKey(key))
+            {
+                return wrappedObject[key];
+            }
+            return defaultValue;
+        } // end GetValue
+
+        #endregion
+
         #region IDictionary Members
         public int Count
         {

@@ -236,6 +236,17 @@ namespace JDO_Tests
 
             Assert.AreEqual(jsonTestString, JSON.Dump(dyn));
         } // end ExtendedSetTest
+
+        [TestMethod()]
+        public void GetValueTest()
+        {
+            dynamic dyn = new DynObject();
+            dyn.Add("foo", "bar");
+            Assert.AreEqual("bar", dyn.GetValue("foo"));
+            Assert.AreEqual(null, dyn.GetValue("baz"));
+            Assert.AreEqual("notbar", dyn.GetValue("baz", "notbar"));
+        } // end AccessorTest
+
         #endregion
 
         #region DynList Tests
