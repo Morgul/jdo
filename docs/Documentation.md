@@ -1,5 +1,5 @@
 ## Documentation
 
-* [Basic Usage Guide](BasicUsage)
-* [Design Overview](DesignOverview)
-* [Troubleshooting](Troubleshooting)
+* [Basic Usage Guide](BasicUsage.md)
+* [Design Overview](DesignOverview.md)
+* [Troubleshooting](Troubleshooting.md)
